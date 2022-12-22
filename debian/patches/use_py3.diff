@@ -1,0 +1,16 @@
+Description: Use python3 to run the tests
+Origin: commit:57749ed
+
+Index: raqm/tests/Makefile.am
+===================================================================
+--- raqm.orig/tests/Makefile.am	2019-12-15 04:24:32.026440088 +0100
++++ raqm/tests/Makefile.am	2019-12-15 04:30:20.539833086 +0100
+@@ -90,7 +90,7 @@
+     export builddir; \
+     $(NULL)
+ 
+-TEST_LOG_COMPILER = python $(srcdir)/runtest.py
++TEST_LOG_COMPILER = python3 $(srcdir)/runtest.py
+ 
+ EXTRA_DIST = \
+     $(TEST_FILES) \

@@ -1,0 +1,33 @@
+#!/bin/sh
+# autopkgtest check: Build and run a program against ITL, to verify that the
+# headers and pkg-config file are installed correctly
+
+set -e
+
+WORKDIR=$(mktemp -d)
+trap "rm -rf $WORKDIR" 0 INT QUIT ABRT PIPE TERM
+cd $WORKDIR
+
+if [ -n "${DEB_HOST_GNU_TYPE:-}" ]; then
+    CROSS_COMPILE="$DEB_HOST_GNU_TYPE-"
+else
+    CROSS_COMPILE=
+fi
+
+cat <<EOF > raqmtest.c
+#include <raqm.h>
+
+int main(int argc, char **argv)
+{
+  raqm_t *rq;
+  rq = raqm_create ();
+  printf("%s\n", raqm_version_string());
+  return 0;
+}
+EOF
+
+${CROSS_COMPILE}gcc -o raqmtest raqmtest.c `${CROSS_COMPILE}pkg-config --cflags --libs raqm`
+echo "build: OK"
+[ -x raqmtest ]
+./raqmtest
+echo "run: OK"

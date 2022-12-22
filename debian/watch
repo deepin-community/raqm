@@ -1,0 +1,3 @@
+version=3
+opts=filenamemangle=s/(?:.*)?v?(\d[\d\.]*)\.tar\.gz/raqm-$1\.tar\.gz/ \
+  https://github.com/HOST-Oman/libraqm/releases .*?v?(\d[\d\.]*)\.tar\.gz

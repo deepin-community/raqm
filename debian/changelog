@@ -1,0 +1,85 @@
+raqm (0.7.0-4) unstable; urgency=medium
+
+  * debian/tests/libssh-server: Use the correct compiler for proposed
+    autopkgtest cross-testing support.
+    Thanks to Sebastien Bacher <seb128@ubuntu.com> (Closes: #946579)
+  * Add use-py3.diff patch to use python3 for tests
+  * Add python3 to build-deps (Closes: #946584)
+  * Update Standards version to 4.4.1
+  * Set debhelper-compat version in Build-Depends
+  * Add Rules-Requires-Root=no
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Tue, 17 Dec 2019 10:08:26 +0100
+
+raqm (0.7.0-3) unstable; urgency=medium
+
+  * d/rules: override dh_auto_configure to pass --enable-gtk-doc option
+    (Closes: #928822)
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Sun, 07 Jul 2019 04:36:51 +0200
+
+raqm (0.7.0-2) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Thu, 04 Jul 2019 03:37:04 +0200
+
+raqm (0.7.0-1) experimental; urgency=medium
+
+  * New upstream version 0.7.0
+  * Remove gbp.conf
+  * Update symbols file
+  * Print Raqm version string in build test
+  * Install complete include/ & pkgconfig/ folders in -dev package
+  * Add Build-Depends-Package field to symbols file
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Tue, 28 May 2019 05:02:33 +0200
+
+raqm (0.6.0-2) experimental; urgency=medium
+
+  * Add gitlab-ci.yml
+  * Add autopkgtest
+  * Add libfreetype6-dev, libharfbuzz-dev & libfribidi-dev to libraqm-dev deps
+  * Remove doc-base
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Wed, 08 May 2019 04:37:27 +0200
+
+raqm (0.6.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/copyright: Change Format URL to correct one
+
+  [ أحمد المحمودي (Ahmed El-Mahmoudy) ]
+  * Imported Upstream version 0.6.0
+  * Add gbp.conf
+  * Bumped compat level to 12
+  * Update standards version 4.3.0
+  * Update copyright years
+  * Update symbols file
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Tue, 07 May 2019 04:47:32 +0200
+
+raqm (0.5.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Dropped fix_pointer_print.diff patch
+  * Update Vcs-* URLs
+  * Update copyright years
+  * Updated standards version to 4.1.5
+  * Bumped compat level to 11
+  * Switch to secure copyright format URL
+  * Add upstream metadata
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Fri, 06 Jul 2018 11:37:46 +0200
+
+raqm (0.3.0-1) unstable; urgency=medium
+
+  [ أحمد المحمودي (Ahmed El-Mahmoudy) ]
+  * Initial release (Closes: #879186)
+
+  [ Emilio Pozuelo Monfort ]
+  * Set the locale to C.UTF-8, a UTF-8 locale is needed for the test
+    suite.
+  * Add a doc-base file for the gtk-doc documentation.
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Fri, 20 Oct 2017 12:06:02 +0200
