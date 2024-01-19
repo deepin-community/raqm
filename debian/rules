@@ -7,4 +7,4 @@ export LC_ALL=C.UTF-8
 	dh $@
 
 override_dh_auto_configure:
-	dh_auto_configure -- --enable-gtk-doc
+	dh_auto_configure -- -Ddocs=true

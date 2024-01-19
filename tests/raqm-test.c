@@ -1,6 +1,6 @@
 /*
  * Copyright © 2015 Information Technology Authority (ITA) <foss@ita.gov.om>
- * Copyright © 2016 Khaled Hosny <khaledhosny@eglug.org>
+ * Copyright © 2016-2023 Khaled Hosny <khaled@aliftype.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,13 +21,13 @@
  * SOFTWARE.
  *
  */
-
-#ifdef HAVE_CONFIG_H
-#include "config.h"
+#ifdef __GNUC__ 
+#define  _DEFAULT_SOURCE
 #endif
-
 #include <assert.h>
+#include <errno.h>
 #include <locale.h>
+#include <string.h>
 
 #include <hb.h>
 
@@ -40,12 +40,47 @@ static char *languages = NULL;
 static char *direction = NULL;
 static char *features = NULL;
 static char *require = NULL;
+static char *letterspacing = NULL;
+static char *wordspacing = NULL;
 static int cluster = -1;
 static int position = -1;
 static int invisible_glyph = 0;
 
 /* Special exit code, recognized by automake that we're skipping a test. */
 static const int skip_exit_status = 77;
+
+static char*
+encode_bytes (const char *bytes)
+{
+  char *s = (char *) bytes;
+  char *p;
+  char *ret = (char *) malloc (strlen (bytes) + 1);
+  char *r = ret;
+
+  while (s && *s)
+  {
+    while (*s && strchr (" ", *s))
+      s++;
+    if (!*s)
+      break;
+
+    errno = 0;
+    unsigned char b = strtoul (s, &p, 16);
+    if (errno || s == p)
+    {
+      free (ret);
+      return NULL;
+    }
+
+    *r++ = b;
+
+    s = p;
+  }
+
+  *r = '\0';
+
+  return ret;
+}
 
 static bool
 parse_args (int argc, char **argv)
@@ -54,7 +89,9 @@ parse_args (int argc, char **argv)
   while (i < argc)
   {
     if (strcmp (argv[i], "--text") == 0)
-      text = argv[++i];
+      text = strdup (argv[++i]);
+    else if (strcmp (argv[i], "--bytes") == 0)
+      text = encode_bytes (argv[++i]);
     else if (strcmp (argv[i], "--font") == 0)
       font = argv[++i];
     else if (strcmp (argv[i], "--fonts") == 0)
@@ -65,6 +102,10 @@ parse_args (int argc, char **argv)
       direction = argv[++i];
     else if (strcmp (argv[i], "--font-features") == 0)
       features = argv[++i];
+    else if (strcmp (argv[i], "--letter-spacing") == 0)
+      letterspacing = argv[++i];
+    else if (strcmp (argv[i], "--word-spacing") == 0)
+      wordspacing = argv[++i];
     else if (strcmp (argv[i], "--require") == 0)
       require = argv[++i];
     else if (strcmp (argv[i], "--cluster") == 0)
@@ -193,6 +234,30 @@ main (int argc, char **argv)
       assert (raqm_add_font_feature (rq, tok, -1));
   }
 
+  if (letterspacing)
+  {
+    for (char *tok = strtok (letterspacing, ","); tok; tok = strtok (NULL, ","))
+    {
+      int spacing = atoi (tok);
+      int start, length;
+      start = atoi (strtok (NULL, ","));
+      length = atoi (strtok (NULL, ","));
+      assert (raqm_set_letter_spacing_range (rq, spacing, start, length));
+    }
+  }
+
+  if (wordspacing)
+  {
+    for (char *tok = strtok (wordspacing, ","); tok; tok = strtok (NULL, ","))
+    {
+      int spacing = atoi (tok);
+      int start, length;
+      start = atoi (strtok (NULL, ","));
+      length = atoi (strtok (NULL, ","));
+      assert (raqm_set_word_spacing_range (rq, spacing, start, length));
+    }
+  }
+
   if (invisible_glyph)
   {
     assert (raqm_set_invisible_glyph (rq, invisible_glyph));
@@ -208,10 +273,11 @@ main (int argc, char **argv)
     index = cluster;
     assert (raqm_index_to_position (rq, &index, &x, &y));
   }
-  
+
   if (position)
     assert (raqm_position_to_index (rq, position, 0, &start_index));
 
+  free (text);
   raqm_destroy (rq);
   FT_Done_Face (face);
   FT_Done_FreeType (library);

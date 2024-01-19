@@ -1,2 +1,6 @@
 Tests: build
 Depends: libraqm-dev, pkg-config, build-essential
+
+Tests: run-suite
+Restrictions: build-needed
+Depends: @, @builddeps@

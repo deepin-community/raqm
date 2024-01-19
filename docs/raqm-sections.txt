@@ -3,17 +3,24 @@
 raqm_create
 raqm_reference
 raqm_destroy
+raqm_clear_contents
 raqm_set_text
 raqm_set_text_utf8
+raqm_set_text_utf16
 raqm_set_par_direction
 raqm_set_language
 raqm_set_freetype_face
 raqm_set_freetype_face_range
 raqm_set_freetype_load_flags
+raqm_set_freetype_load_flags_range
+raqm_set_letter_spacing_range
+raqm_set_word_spacing_range
 raqm_set_invisible_glyph
 raqm_add_font_feature
 raqm_layout
 raqm_get_glyphs
+raqm_get_par_resolved_direction
+raqm_get_direction_at_index
 raqm_index_to_position
 raqm_position_to_index
 raqm_version
@@ -27,4 +34,6 @@ RAQM_VERSION_STRING
 raqm_t
 raqm_direction_t
 raqm_glyph_t
+<SUBSECTION Private>
+RAQM_API
 </SECTION>

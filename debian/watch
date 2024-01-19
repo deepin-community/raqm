@@ -1,3 +1,5 @@
-version=3
-opts=filenamemangle=s/(?:.*)?v?(\d[\d\.]*)\.tar\.gz/raqm-$1\.tar\.gz/ \
-  https://github.com/HOST-Oman/libraqm/releases .*?v?(\d[\d\.]*)\.tar\.gz
+version=4
+
+opts=downloadurlmangle=s#archive/refs/tags/v(.*)\.tar\.gz#releases/download/v$1/@PACKAGE@-$1\.tar\.xz# \
+https://github.com/HOST-Oman/lib@PACKAGE@/tags \
+   (?:.*?/)?v?([\d.]*)@ARCHIVE_EXT@

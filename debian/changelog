@@ -1,3 +1,39 @@
+raqm (0.10.1-1) unstable; urgency=medium
+
+  * New upstream version 0.10.1
+  * d/rules: add mangling to fetch upstream xz tarball
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Sun, 16 Apr 2023 02:48:33 +0200
+
+raqm (0.10.0-1) unstable; urgency=medium
+
+  * New upstream version 0.10.0
+  * Update watch file
+  * Update copyright years
+  * d/u/metadata: remove Homepage field
+  * Removed patches, applied upstream
+  * d/control:
+    + add meson to build deps.
+    +  update to debhelper-compat 13
+    +  updated standards version to 4.6.2
+    +  libfreetype6-dev -> libfreetype-dev
+  * Update symbols file
+  * d/rules: update override for dh_autoconfigure for meson
+  * d/tests/build: fix description in comments
+  * d/tests/run-suite: make check -> ninja test
+    Thanks to Dave Jones <dave.jones@canonical.com>
+
+ -- أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>  Sat, 15 Apr 2023 04:58:11 +0200
+
+raqm (0.7.0-4.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Add upstream fix for FTBFS with recent HarfBuzz. (Closes: #1022404)
+  * Require HarfBuzz >= 5.2, thanks to Jeremy Bicha.
+  * Run the full test suite as autopkgtest, thanks to Dave Jones.
+
+ -- Adrian Bunk <bunk@debian.org>  Fri, 27 Jan 2023 18:33:11 +0200
+
 raqm (0.7.0-4) unstable; urgency=medium
 
   * debian/tests/libssh-server: Use the correct compiler for proposed
