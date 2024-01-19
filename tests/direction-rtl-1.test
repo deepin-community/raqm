@@ -1,7 +1,6 @@
 fonts/sha1sum/bcb3b98eb67ece19b8b709f77143d91bcb3d95eb.ttf
 عربي(English ) عربي
 --direction rtl
-Text is: عربي(English ) عربي
 Direction is: RTL
 
 Before script detection:
@@ -48,7 +47,7 @@ script for ch[18]	Arab
 
 Number of runs before script itemization: 3
 
-Fribidi Runs:
+BiDi Runs:
 run[0]:	 start: 12	length: 7	level: 1
 run[1]:	 start: 5	length: 7	level: 2
 run[2]:	 start: 0	length: 5	level: 1

@@ -2,16 +2,17 @@ Source: raqm
 Section: libs
 Priority: optional
 Maintainer: أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>
-Standards-Version: 4.4.1
+Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Build-Depends:
- debhelper-compat (= 12),
+ debhelper-compat (= 13),
  pkg-config,
- libfreetype6-dev (>= 2.4.2),
+ libfreetype-dev (>= 2.4.2),
  libfribidi-dev,
- libharfbuzz-dev,
+ libharfbuzz-dev (>= 5.2),
  python3,
- gtk-doc-tools (>= 1.15)
+ gtk-doc-tools (>= 1.15),
+ meson (>= 0.56.0)
 Homepage: https://github.com/HOST-Oman/libraqm
 Vcs-Git: https://salsa.debian.org/debian/raqm.git
 Vcs-Browser: https://salsa.debian.org/debian/raqm
@@ -33,9 +34,9 @@ Architecture: any
 Multi-Arch: same
 Section: libdevel
 Depends: ${misc:Depends}, libraqm0 (= ${binary:Version})
- , libfreetype6-dev
+ , libfreetype-dev
  , libfribidi-dev
- , libharfbuzz-dev
+ , libharfbuzz-dev (>= 5.2)
 Description: Development files for Raqm library
  Raqm is a library for complex text layout.
  .

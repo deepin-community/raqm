@@ -1,7 +1,6 @@
 fonts/sha1sum/bcb3b98eb67ece19b8b709f77143d91bcb3d95eb.ttf
 aa (bb) aa
 --direction rtl
-Text is: aa (bb) aa
 Direction is: RTL
 
 Before script detection:
@@ -30,7 +29,7 @@ script for ch[9]	Latn
 
 Number of runs before script itemization: 1
 
-Fribidi Runs:
+BiDi Runs:
 run[0]:	 start: 0	length: 10	level: 2
 
 Number of runs after script itemization: 1

@@ -1,5 +1,5 @@
 #!/bin/sh
-# autopkgtest check: Build and run a program against ITL, to verify that the
+# autopkgtest check: Build and run a program against raqm, to verify that the
 # headers and pkg-config file are installed correctly
 
 set -e

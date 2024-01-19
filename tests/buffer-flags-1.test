@@ -1,7 +1,6 @@
 fonts/sha1sum/bcb3b98eb67ece19b8b709f77143d91bcb3d95eb.ttf
 َب َ
 --font-features -fina,-init,-medi
-Text is: َب َ
 Direction is: DEFAULT
 
 Before script detection:
@@ -16,9 +15,11 @@ script for ch[1]	Arab
 script for ch[2]	Arab
 script for ch[3]	Arab
 
+Resolved direction is: RTL
+
 Number of runs before script itemization: 1
 
-Fribidi Runs:
+BiDi Runs:
 run[0]:	 start: 0	length: 4	level: 1
 
 Number of runs after script itemization: 1
